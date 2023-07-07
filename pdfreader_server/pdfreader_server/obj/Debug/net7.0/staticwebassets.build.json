@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "EVKCbjfgMi4iBbBmF2blUuE0tCBATRKPSVnLjf4emPg=",
+  "Source": "pdfreader_server",
+  "BasePath": "_content/pdfreader_server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

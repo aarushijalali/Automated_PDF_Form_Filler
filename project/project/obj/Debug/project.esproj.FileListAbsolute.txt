@@ -1,0 +1,2 @@
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\project\project\obj\Debug\project.esproj.SuggestedBindingRedirects.cache
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\project\project\obj\Debug\project.esproj.CoreCompileInputs.cache

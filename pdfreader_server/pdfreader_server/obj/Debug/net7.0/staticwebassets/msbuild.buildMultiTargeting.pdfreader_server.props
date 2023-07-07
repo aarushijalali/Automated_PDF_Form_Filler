@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\pdfreader_server.props" />
+</Project>

@@ -1,0 +1,67 @@
+
+<div class="header">
+
+  <div class="header-right">
+
+    <div style="text-align:center">
+      <a class="button" routerLink="">Sign out</a><br />
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+
+<div style="text-align:center" class="file-input-container">
+
+  <input type="file" (change)="onFileSelected($event)" id="fileinput" style="padding: 6px 24px; margin-left: 20px" />
+  <br />
+  <div style="align-items: flex-start">
+  <button class="button" (click)="uploadFile()" >Upload</button><br>
+    </div>
+  <div style="align-items: flex-end">
+  <button (click) ="getExcelColumns()">Get Excel Fields</button>
+    </div>
+
+  <br />
+  <br />
+  <div>
+
+      <select [(ngModel)]="selectedOption" id="excelCol">
+        <option *ngFor="let col of cols" [value]="col">{{ col }}</option>
+      </select>
+
+
+      <select [(ngModel)]="selectedField" id="formField">
+        <option *ngFor="let field of fields" [value]="field">{{ field }}</option>
+      </select>
+
+
+
+    <button (click)="addValuesToTable()">+</button>
+  </div>
+
+  <br />
+
+  <table id="valuesTable">
+    <thead>
+      <tr>
+        <th>Value 1</th>
+        <th>Value 2</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <button (click)="submit()">Submit</button>
+
+
+
+
+
+
+
+
+
+</div>
+
