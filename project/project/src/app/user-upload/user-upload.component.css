@@ -1,78 +1,323 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-.button {
-  box-shadow: inset 0 1px 0 0 #ffffff;
-  background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-  border-radius: 6px;
+
+
+
+
+.header {
+  background-color: #333333;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+
+
+.header-right {
+  margin-left: auto;
+}
+
+
+
+
+
+
+
+.header a.button {
+  background-color: #ffffff;
+  color: red;
   border: 1px solid #dcdcdc;
-  display: inline-block;
-  cursor: pointer;
-  color: #666666;
+  border-radius: 6px;
+  padding: 6px 24px;
   font-family: Montserrat, sans-serif;
   font-size: 15px;
   font-weight: bold;
-  padding: 6px 24px;
   text-decoration: none;
   text-shadow: 0 1px 0 #ffffff;
-  outline: 0;
 }
 
-/* Style the header with a grey background and some padding */
-.header {
+
+
+
+
+.file-input {
+  text-align: center;
+  padding-top: 40px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+
+
+
+
+  .file-input .input-group {
+    display: flex;
+    align-items: center;
+  }
+
+
+
+
+
+    .file-input .input-group .custom-file {
+      flex-grow: 1;
+    }
+
+
+
+
+
+  .file-input .input-group-append {
+    margin-left: 10px;
+    padding: 6px 12px;
+  }
+
+
+
+
+
+  .file-input .custom-file-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+
+
+
+
+.middle-button-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+
+
+
+
+
+
+
+
+.dropdown, .extracted {
+  width: 100px;
+}
+
+
+
+
+
+.extracted {
   overflow: hidden;
-  background-color: #333333;
-  padding: 20px 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 
 
-  /* Style the header links */
-  .header a {
-    float: left;
-    color: black;
+
+
+.select-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+
+
+
+  .select-container select {
+    margin: 0 10px;
+    padding: 6px 12px;
+    font-size: 15px;
+  }
+
+
+
+
+
+  .select-container button {
+    background-color: #ffffff;
+    color: #666666;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: Montserrat, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+
+
+
+
+
+    .select-container button:hover {
+      background-color: #f6f6f6;
+    }
+
+
+
+
+
+table.smaller-table {
+  width: 70%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: floralwhite;
+}
+
+
+
+
+
+  table.smaller-table th,
+  table.smaller-table td {
+    border: 1px solid #dcdcdc;
+    padding: 8px;
     text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 4px;
   }
 
-    /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
-    .header a.logo {
-      font-size: 25px;
-      font-weight: bold;
-    }
 
-    /* Change the background color on mouse-over */
-    .header a:hover {
-      background-color: #ddd;
-      color: black;
-    }
 
-    /* Style the active/current link*/
-    .header a.active {
-      background-color: dodgerblue;
-      color: white;
-    }
 
-/* Float the link section to the right */
-.header-right {
-  float: right;
-}
 
-/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
+  table.smaller-table th {
+    background-color: #f6f6f6;
+  }
+
+
+
+
+
+  table.smaller-table tbody tr:nth-child(even) {
+    background-color: #f6f6f6;
+  }
+
+
+
+
+
+  table.smaller-table tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+
+
+
+
+
+  table.smaller-table th,
+  table.smaller-table td {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+
+
+
+
+  table.smaller-table th {
+    font-weight: bold;
+  }
+
+
+
+
+
+  table.smaller-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+
+
+
+
+  table.smaller-table tbody td:before {
+    content: attr(data-label);
     display: block;
-    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: #666666;
   }
 
-  .header-right {
-    float: none;
+
+
+
+
+@media (max-width: 768px) {
+  table.smaller-table {
+    width: 100%;
   }
+
+
+
+
+
+    table.smaller-table td,
+    table.smaller-table th {
+      padding: 6px;
+      font-size: 14px;
+    }
+
+
+
+
+
+    table.smaller-table tbody td:before {
+      font-size: 12px;
+      margin-bottom: 0;
+    }
 }
 
 
 
 
+
+.submit-btn,
+.trial-btn {
+  background-color: #ffffff;
+  color: #666666;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  padding: 6px 24px;
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+
+
+
+
+  .submit-btn:hover,
+  .trial-btn:hover {
+    margin-top: 20px;
+    margin-left: 10px;
+    background-color: #f6f6f6;
+  }
+
+
+
+
+
+.WelcomeUser {
+  color: azure;
+  margin-top: 10px;
+  font-size: 20px
+}

@@ -1,36 +1,32 @@
-
-<form>
-
-<div class="container">
-
-  <br />
-
-  <label for="uname"><b>Username</b></label>
-  <input type="text" placeholder="Enter Username" name="uname" id="usrnamelogin" required>
-
-
-  <br />
-
-  <span><label for="psw"><b>Password</b></label>
-  <label (click)="display()" style="color:red">?</label></span>
-  <input type="password" placeholder="Enter Password" name="psw" id="usrpasslogin" required>
-  <br />
-
-  <div style="text-align:center">
-    <a class="button"  (click)="getUser()">Login</a><br />
-    </div>
-    <br />
-   
-
-
-  </div>
-
-  
-  <div >
-    
-    <div style="text-align:center">
-      <a style="color:green" routerLink="/signup">New User? SignUp</a><br />
+<body class="container-fluid main_container">
+  <!-- Bootstrap Alert -->
+  <div class="container mt-3" *ngIf="dismissable">
+    <div class="alert alert-danger">
+      Invalid Password or username
+      <button type="button" class="close ml-auto" (click)="dismissAlert()">&times;</button>
     </div>
   </div>
-
-</form>
+  <form>
+    <div class="container">
+      <br />
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" id="usrnamelogin" required>
+      <br />
+      <br>
+      <span>
+        <label for="psw"><b>Password</b></label>
+      </span>
+      <input type="password" placeholder="Enter Password" name="psw" id="usrpasslogin" required (keyup.enter)="getUser()">
+      <br />
+      <br />
+      <br />
+      <div style="text-align:center">
+        <a class="button" (click)="getUser()">Login</a><br />
+      </div>
+      <br />
+      <div style="text-align:center">
+        <a class="router-link" routerLink="/signup">New User? SignUp</a><br />
+      </div>
+    </div>
+  </form>
+</body>

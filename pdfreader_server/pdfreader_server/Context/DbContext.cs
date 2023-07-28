@@ -17,6 +17,9 @@ namespace pdfreader_server
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<User>().ToTable("users");
+            builder.Entity<UserFileObj>().ToTable("files");
+            builder.Entity<UserFileObj>().ToTable("PdfFiles");
+            builder.Entity<UserFileObj>().ToTable("ExcelFiles");
         }
     }
 }

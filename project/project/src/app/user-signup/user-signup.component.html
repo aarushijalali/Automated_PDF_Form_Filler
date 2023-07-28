@@ -1,36 +1,75 @@
 
+
+<div class="container mt-3">
+
+  <div class="alert alert-danger" *ngIf="!(UserName && UserEmail && UserPassword && UserConfirm &&
+
+          containsLowerCaseLetter(UserPassword) && containsUpperCaseLetter(UserPassword) &&
+
+          containsNumber(UserPassword) && hasMinimumLength(UserPassword) &&
+
+          (UserConfirm === UserPassword))">
+
+    Please enter all the fields correctly.
+
+  </div>
+
+</div>
+
 <form>
+
   <div class="container">
 
     <br />
 
-    <label for="uname" ><b>Enter username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" id="usrname" required>
+    <label for="usrname"><b>Enter username</b></label>
 
-    <br />
-    <label for="email"  ><b>Enter your email</b></label>
-    <input type="email"  name="email" placeholder="xyz@gmail.com" id="usremail">
-    <br />
-
-    <label for="psw"  ><b>Enter Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw"  id="usrpassword" required >
-
+    <input type="text" placeholder="Enter Username" name="usrname" id="usrname" [(ngModel)]="UserName" required>
 
     <br />
 
+    <label for="usremail"><b>Enter your email</b></label>
 
-    <label for="pswchck"><b>Re-enter </b></label>
-    <input type="password" placeholder="Re-enter" name="psw" id="usrconfirm" required>
+    <input type="email" name="usremail" placeholder="xyz@gmail.com" id="usremail" [(ngModel)]="UserEmail" required>
 
+    <br />
+
+    <div class="password-container">
+
+      <label for="psw"><b>Enter Password</b><span class="tooltip-icon"></span></label>
+
+      <input type="password" placeholder="Password" id="usrpassword" name="psw" [(ngModel)]="UserPassword" required (keyup)="validatePassword()">
+
+      <div class="tooltip-text">
+
+        <h3>Password must contain the following:</h3>
+
+        <p id="letter" [class.invalid]="!containsLowerCaseLetter(UserPassword)">A <b>lowercase</b> letter</p>
+
+        <p id="capital" [class.invalid]="!containsUpperCaseLetter(UserPassword)">A <b>capital (uppercase)</b> letter</p>
+
+        <p id="number" [class.invalid]="!containsNumber(UserPassword)">A <b>number</b></p>
+
+        <p id="length" [class.invalid]="!hasMinimumLength(UserPassword)">Minimum <b>8 characters</b></p>
+
+      </div>
+
+    </div>
+
+    <label for="usrconfirm"><b>Re-enter Password</b></label>
+
+    <input type="password" placeholder="Re-enter" name="usrconfirm" id="usrconfirm" [(ngModel)]="UserConfirm" required>
 
     <br />
 
     <div style="text-align:center">
-      <a class="button" (click)="addUser()">Sign up</a><br />
+
+      <button type="button" (click)="addUser()">Sign up</button><br />
+
     </div>
+
     <br />
 
-
-
   </div>
-  </form>
+
+</form>

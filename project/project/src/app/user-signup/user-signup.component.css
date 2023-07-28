@@ -1,20 +1,3 @@
-.button {
-  box-shadow: inset 0 1px 0 0 #ffffff;
-  background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-  border-radius: 6px;
-  border: 1px solid #dcdcdc;
-  display: inline-block;
-  cursor: pointer;
-  color: #666666;
-  font-family: Montserrat, sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 6px 24px;
-  text-decoration: none;
-  text-shadow: 0 1px 0 #ffffff;
-  outline: 0;
-}
-
 form {
   width: 300px;
   margin: auto;
@@ -27,50 +10,266 @@ form {
 
 
 
-  /* Form header style */
-  form h2 {
+
+
+
+
+/* Style all input fields */
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+
+
+
+
+
+
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+
+
+
+
+
+
+#message {
+  display: none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+  #message p {
+    padding: 10px 35px;
+    font-size: 18px;
+  }
+
+
+
+
+
+
+
+.valid {
+  color: green;
+}
+
+
+
+
+
+
+
+.invalid {
+  color: red;
+}
+
+
+
+
+
+
+
+/* Form header style */
+form h2 {
+  text-align: center;
+  color: green;
+}
+
+
+
+
+
+
+
+/* Form field labels style */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  color: green;
+}
+
+
+
+
+
+
+
+/* Form input style */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+  width: 94%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid green;
+  border-radius: 3px;
+}
+
+
+
+
+
+
+
+/* Form submit button style */
+form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+  /* Form submit button hover style */
+  form input[type="submit"]:hover {
+    background-color: darkgreen;
+  }
+
+
+
+
+
+
+
+/* Add tooltip styles */
+.password-container {
+  position: relative;
+}
+
+
+
+
+
+
+
+  .password-container .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #f1f1f1;
+    color: #000;
     text-align: center;
-    color: green;
-  }
-
-
-
-  /* Form field labels style */
-  form label {
-    display: block;
-    margin-bottom: 5px;
-    color: green;
-  }
-
-
-
-  /* Form input style */
-  form input[type="text"],
-  form input[type="password"],
-  form input[type="email"]{
-    width: 94%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid green;
-    border-radius: 3px;
-  }
-
-
-
-  /* Form submit button style */
-  form input[type="submit"] {
-    width: 100%;
     padding: 10px;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px; /* Updated font size */
   }
 
 
 
-    /* Form submit button hover style */
-    form input[type="submit"]:hover {
-      background-color: darkgreen;
+
+
+
+
+    .password-container .tooltip-text h3 {
+      font-size: 16px; /* Updated font size */
     }
+
+
+
+
+
+
+
+    .password-container .tooltip-text p {
+      font-size: 12px; /* Updated font size */
+    }
+
+
+
+
+
+
+
+
+
+  .password-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Form input style */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+  width: 94%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid green;
+  border-radius: 3px;
+}
+
+
+
+
+
+
+
+
+
+/* Form submit button style */
+button[type="button"] {
+  width: 100%;
+  padding: 12px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+
+
+
+
+
+
+  button[type="button"]:hover {
+    background-color: darkgreen;
+  }

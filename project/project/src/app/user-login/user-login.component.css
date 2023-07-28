@@ -1,19 +1,25 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+
 .button {
-  box-shadow: inset 0 1px 0 0 #ffffff;
-  background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-  border-radius: 6px;
-  border: 1px solid #dcdcdc;
-  display: inline-block;
+  background: green;
+  border-radius: 20px;
+  border: none;
+  color: white;
   cursor: pointer;
-  color: #666666;
-  font-family: Montserrat, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 15px;
   font-weight: bold;
-  padding: 6px 24px;
+  padding: 10px 20px;
   text-decoration: none;
-  text-shadow: 0 1px 0 #ffffff;
-  outline: 0;
 }
+
+
+
+
+
+
 
 form {
   width: 300px;
@@ -27,7 +33,10 @@ form {
 
 
 
-  /* Form header style */
+
+
+
+
   form h2 {
     text-align: center;
     color: green;
@@ -35,7 +44,10 @@ form {
 
 
 
-  /* Form field labels style */
+
+
+
+
   form label {
     display: block;
     margin-bottom: 5px;
@@ -44,32 +56,67 @@ form {
 
 
 
-  /* Form input style */
+
+
+
+
   form input[type="text"],
   form input[type="password"] {
-    width: 94%;
+    width: 94%; /* Adjusted width to leave some space towards the left */
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid green;
+    border: 1px solid #333333; /* Set the border color to #333333 */
     border-radius: 3px;
   }
 
 
 
-  /* Form submit button style */
+
+
+
+
   form input[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: green;
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: 20px;
     cursor: pointer;
   }
 
 
 
-    /* Form submit button hover style */
-    form input[type="submit"]:hover {
-      background-color: darkgreen;
-    }
+
+
+
+
+.container {
+  background-color: #f1f1f1;
+  padding: 40px 20px; /* Adjusted padding value */
+  margin-bottom: 20px; /* Adjusted margin-bottom value */
+  overflow: hidden; /* Add overflow hidden to contain child elements */
+  border-bottom: 1px solid #333333; /* Set the bottom border color to #333333 */
+}
+
+
+
+
+
+
+
+form input[type="submit"]:hover {
+  background-color: darkgreen;
+}
+
+
+
+
+
+
+
+a.router-link {
+  color: green;
+  display: inline-block; /* Add display inline-block to make the link inline */
+  margin-top: 20px; /* Add margin-top to create spacing below the form */
+}

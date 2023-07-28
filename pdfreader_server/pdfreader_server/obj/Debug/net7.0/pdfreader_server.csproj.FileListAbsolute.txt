@@ -87,3 +87,17 @@ C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_ser
 C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\ExcelDataReader.dll
 C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\ExcelDataReader.DataSet.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.barcodes.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.bouncy-castle-connector.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.forms.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.io.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.kernel.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.layout.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.pdfa.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.sign.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.styledxmlparser.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.svg.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.bouncy-castle-adapter.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\itext.commons.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\aajalali\Desktop\Automation of Pdf extraction and writing\pdfreader_server\pdfreader_server\bin\Debug\net7.0\BouncyCastle.Crypto.dll

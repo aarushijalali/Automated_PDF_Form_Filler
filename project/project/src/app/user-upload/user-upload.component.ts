@@ -2,6 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { DataSharingService } from 'src/app/data-sharing.service';
+import { AuthenticationService } from 'src/app/authentication.service';
+
+
+
 
 
 @Component({
@@ -11,15 +16,91 @@ import { HttpClient } from '@angular/common/http';
 })
 
 
+
+
+
 export class UserUploadComponent {
 
-  selectedFile: File = new File([],'');
-  constructor(private service: SharedService, private http: HttpClient) {
-    
+
+
+  showSuccessAlert = false;
+  showErrorAlert = false;
+  selectedFile: File = new File([], '');
+  selectedPdf: File = new File([], '');
+  username: string = '';
+  userid: number = -1;
+  selectedPdfName: string = '';
+  selectedExcelName: string = '';
+  cols: string[] = [];
+  colsize: number = -1;
+  selectedOption: any;
+  selectedOptionIndex: number = -1;
+  fields: string[] = [];
+  selectedField: any;
+  myMap = new Map<string, number>()
+  displayusrname: any;
+
+
+
+  sessionres: any;
+  pdffieldsold: string[] = [];
+  excelfieldsold: string[] = [];
+  constructor(private service: SharedService, private http: HttpClient, private datashare: DataSharingService, private authservice: AuthenticationService) {
+
+
+
+
+
   }
+
+
+
+
+
+  onPdfSelected(event: any) {
+    this.selectedPdf = event.target.files[0];
+    this.selectedPdfName = this.selectedPdf?.name;
+    this.clearTableAndMap();
+  }
+
+
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    this.selectedExcelName = this.selectedFile?.name;
+    this.clearTableAndMap();
+  }
+
+
+
+  uploadPdf() {
+    if (this.selectedPdf) {
+      const formData = new FormData();
+      formData.append('file', this.selectedPdf);
+
+
+
+
+
+      this.http.post("http://localhost:5121/api/UploadPdf", formData).subscribe(
+
+
+
+
+
+        (response) => {
+          console.log('File uploaded successfully');
+          this.showSuccessAlert = true;
+        },
+        (error) => {
+          console.error('Error uploading file:', error);
+          this.showErrorAlert = true;
+
+
+
+        }
+      );
+    }
   }
 
 
@@ -31,97 +112,205 @@ export class UserUploadComponent {
 
 
 
-      
       this.http.post("http://localhost:5121/api/UploadExcel", formData).subscribe(
-        
+
+
+
         (response) => {
           console.log('File uploaded successfully');
-          alert("Uploaded");
+          this.showSuccessAlert = true;
         },
         (error) => {
           console.error('Error uploading file:', error);
-
+          this.showErrorAlert = true;
         }
       );
-
-
-
-
-      //// Clear the file input field
-      //const fileInput = document.getElementById('fileInput') as HTMLInputElement;
-      //fileInput.value = '';
-      //this.selectedFile = new File([], '');
     }
   }
 
+
+
   getExcelColumns() {
-          this.service.getCol().subscribe((res) => {
-
-            this.cols = res;
-            this.colsize = this.cols.length;
+    this.service.getCol(this.userid, this.selectedFile.name).subscribe((res) => {
+      this.cols = res;
+      this.colsize = this.cols.length;
       //alert(this.selectedOption);
-
-      })
-
+    })
   }
+
+
 
   ngOnInit() {
-    
+
+
+
+    this.username = this.datashare.getUsername();
+    this.userid = this.datashare.getUserId();
+    this.displayusrname = document.getElementById("displayusrname");
+    this.displayusrname.innerHTML = "Welcome " + this.username + "!";
+
+
+
+    this.service.getSessionFields(this.userid).subscribe((res) => {
+      this.sessionres = JSON.stringify(res);
+      //alert(this.sessionres);
+
+
+
+      res.forEach((item: any) => {
+        if (item.userFields !== null) {
+          //alert(item.);
+          this.pdffieldsold.push(item.userFields);
+        }
+
+
+
+        if (item.userFieldExcel !== null) {
+          this.excelfieldsold.push(item.userFieldExcel.trim());
+        }
+      });
+      this.cols = this.excelfieldsold;
+      this.fields = this.pdffieldsold;
+      this.colsize = this.cols.length;
+      //alert(this.pdffieldsold)
+    })
+
+
+
+    this.service.getSessionFileNames(this.userid).subscribe((res) => {
+      this.selectedPdfName = res[0].userPdf;
+      this.selectedExcelName = res[0].userExcel;
+    })
+
+
 
   }
 
-  cols: string[] = [];
-  colsize: number= -1;
-  selectedOption: any;
-  selectedOptionIndex: number = -1;
-
-  fields: string[] = ["field1", "field2", "field3"];
-  selectedField: any;
-  
 
 
-  //getCols() {
-   
-
-  //  this.service.getCol().subscribe((res) => {
-     
-  //    this.cols = res;
-      
-  //    alert(this.selectedOption);
-     
-  //  })
-
-  //}
-  myMap = new Map<number, string>();
-  //myArr: string[] = [];
   addValuesToTable() {
+
+
 
     for (let i = 0; i < this.colsize; i++) {
       if (this.selectedOption == this.cols[i]) {
         this.selectedOptionIndex = i;
       }
     }
-
-    
-    this.myMap.set(this.selectedOptionIndex, this.selectedField);
+    this.myMap.set(this.selectedField, this.selectedOptionIndex);
     var table = document.getElementById("valuesTable") as HTMLTableElement;
     var row = table.insertRow(-1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     cell1.innerHTML = this.selectedOption;
     cell2.innerHTML = this.selectedField;
-    //this.myArr = Array.from(this.myMap.values());
-    //alert(this.myArr);
 
-    //alert(JSON.stringify(this.myMap));
+
+
 
 
   }
-  submit() {
-    this.service.sendData(this.selectedOption, this.selectedField).subscribe(res => {
-      alert(res.toString());
-    })
 
-    
+
+
+  dismissSuccessAlert() {
+    this.showSuccessAlert = false;
+  }
+
+
+
+
+
+  dismissErrorAlert() {
+    this.showErrorAlert = false;
+  }
+
+
+
+  signout() {
+    this.authservice.logout();
+  }
+
+
+
+
+
+  submit() {
+    this.sendMapData(this.myMap, this.selectedPdfName, this.selectedExcelName, this.userid);
+    //this.sendMapData(this.myMap, this.selectedPdf.name, this.selectedFile.name, this.username);
+    alert("Submitted!");
+  }
+
+
+
+
+
+
+
+  getPdfFields() {
+    if (this.selectedPdfName) {
+      this.service.getPdfFields(this.selectedPdf.name, this.userid).subscribe((res) => {
+        this.fields = res;
+      });
+    }
+  }
+
+
+
+
+
+  sendMapData(myMap: Map<string, number>, pdfname: string, excelname: string, userid: number) {
+    const jsonData: { [key: string]: number } = {};
+
+
+
+
+
+    Array.from(myMap.entries()).forEach(([key, value]) => {
+      jsonData[key] = value;
+    });
+
+
+
+
+
+    this.http.post("http://localhost:5121/api/Map/ReceiveMapData", { myMap: jsonData, pdfName: pdfname, excelName: excelname, userId: userid }).subscribe(
+      (response) => {
+        console.log('Map data sent successfully:', response);
+      },
+      (error) => {
+        console.error('Error sending map data:', error);
+      }
+    );
+  }
+
+
+
+
+
+  getRows() {
+    this.service.getRows().subscribe((res) => {
+      alert("Downloaded!");
+    })
+  }
+
+
+
+  clearTableAndMap() {
+    this.myMap.clear();
+    var table = document.getElementById("valuesTable") as HTMLTableElement;
+    var rowCount = table.rows.length;
+
+
+
+
+
+    // Start from index 1 to skip the header row (index 0)
+    for (var i = rowCount - 1; i >= 1; i--) {
+      table.deleteRow(i);
+    }
   }
 }
+  
+
+
